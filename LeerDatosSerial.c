@@ -34,11 +34,10 @@ void main(void){
    enable_interrupts(INT_RDA);
    enable_interrupts(GLOBAL);
    
-  // printf("Ingresa un dato: ");
    while(1){
       if(FlagSerial==1){
-         //printf("Caracter %c,valor %u,Hexa %x,\r\n",Dato,Dato+1,Dato+1);
          putc(Dato);
+         printf("Caracter %c,valor %u,Hexa %x,\r\n",Dato,Dato+1,Dato+1);
          FlagSerial= 0;
       }
    }
