@@ -17,8 +17,7 @@ int FlagSerial;
 
 //Aqui deben ir la IsR's interrupciones
 #int_rda
-void isr_rda(void)
-{
+void isr_rda(void){
    Dato=getc();
 }
    //int_timer0
@@ -26,12 +25,12 @@ void isr_rda(void)
 //variables globales
 
 //aqui el void main(void)
-void main(void)
-{
+void main(void){
+   enable_interrupts(INT_RDA);
+   enable_interrupts(GLOBAL);
    
-   //Aqui iniciaizamos todo
-   while(1)
-   {
+   printf("Hola mundo");
+   while(1){
       
    }
 }
