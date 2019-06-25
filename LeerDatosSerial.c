@@ -44,7 +44,7 @@ void main(void){
    
    while(1){
       if(FlagSerial==1){
-         putc(Buffer[IndiceBuffer-1]);
+         //putc(Buffer[IndiceBuffer-1]);
          printf("Caracter %c, valor %u, Hexa %x,\r\n",Buffer[IndiceBuffer-1],Buffer[IndiceBuffer-1]+1,Buffer[IndiceBuffer-1]+1);
          FlagSerial= 0; 
       }
