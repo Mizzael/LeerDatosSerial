@@ -6,8 +6,9 @@
 
 
 //Aqui deben ir las interfaces tales como la rs-232, I^2C
-#define _DEBUG_SERIAL_
+#define MaxTam 10
 
+#define _DEBUG_SERIAL_
 #ifdef _DEBUG_SERIAL_
    #define TX_232    PIN_C6
    #define RX_232    PIN_C7
@@ -15,18 +16,25 @@
    #use fast_io(c)
 #endif
 
-char Dato;
-int FlagSerial;
+
+//variables globales
+char IndiceBuffer=0;
+int  FlagSerial;
+char Buffer[MaxTam];
+
 
 //Aqui deben ir la IsR's interrupciones
 #int_rda
 void isr_rda(void){
-   Dato=getc();
+   Buffer[IndiceBuffer]=getc();
    FlagSerial = 1;
+   IndiceBuffer++;
+   if(IndiceBuffer>MaxTam){
+      IndiceBuffer=0;
+   }
 }
-   //int_timer0
+//int_timer0
 
-//variables globales
 
 //aqui el void main(void)
 void main(void){
@@ -36,9 +44,11 @@ void main(void){
    
    while(1){
       if(FlagSerial==1){
-         //printf("\r\n");
-         printf("Caracter %c, valor %u, Hexa %x,\r\n",Dato,Dato+1,Dato+1);
-         FlagSerial= 0; 
+         //putc(Buffer[IndiceBuffer-1]);
+         for(int i=0;i<100;i++){
+            FlagSerial= 0;
+         }
+          
       }
    }
 }
