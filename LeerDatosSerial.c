@@ -16,8 +16,11 @@
    #use fast_io(c)
 #endif
 
+
+//variables globales
 char Dato;
-int FlagSerial,IndiceBuffer=0;
+char IndiceBuffer=0;
+int FlagSerial;
 char Buffer[MaxTam];
 
 
@@ -32,9 +35,8 @@ void isr_rda(void){
       IndiceBuffer=0;
    }
 }
-   //int_timer0
+//int_timer0
 
-//variables globales
 
 //aqui el void main(void)
 void main(void){
@@ -46,7 +48,7 @@ void main(void){
       if(FlagSerial==1){
          printf("Ingresa un caracter: ");
          //putc(Dato);
-         putc(Buffer[MaxTam]);
+         putc(Buffer[IndiceBuffer]);
          printf("\r\n");
          //printf("Caracter %c, valor %u, Hexa %x,\r\n",Dato,Dato+1,Dato+1);
          FlagSerial= 0; 
