@@ -44,11 +44,11 @@ void main(void){
    
    while(1){
       if(FlagSerial==1){
-         //putc(Buffer[IndiceBuffer-1]);
-         for(int i=0;i<100;i++){
-            FlagSerial= 0;
+         putc(Buffer[IndiceBuffer-1]);
+         for(int i=0;i<IndiceBuffer;i++){
+            printf("\r\n La posicion %u  tiene  %c,%u,%x",i,buffer[i], buffer[i], buffer[i]);
          }
-          
+          FlagSerial= 0;
       }
    }
 }
