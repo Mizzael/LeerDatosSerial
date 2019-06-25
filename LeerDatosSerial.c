@@ -18,7 +18,6 @@
 
 
 //variables globales
-char Dato;
 char IndiceBuffer=0;
 int FlagSerial;
 char Buffer[MaxTam];
@@ -27,7 +26,6 @@ char Buffer[MaxTam];
 //Aqui deben ir la IsR's interrupciones
 #int_rda
 void isr_rda(void){
-   //Dato=getc();
    FlagSerial = 1;
    Buffer[IndiceBuffer]=getc();
    IndiceBuffer++;
@@ -47,7 +45,6 @@ void main(void){
    while(1){
       if(FlagSerial==1){
          printf("Ingresa un caracter: ");
-         //putc(Dato);
          putc(Buffer[IndiceBuffer]);
          printf("\r\n");
          //printf("Caracter %c, valor %u, Hexa %x,\r\n",Dato,Dato+1,Dato+1);
