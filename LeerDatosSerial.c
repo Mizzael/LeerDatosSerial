@@ -17,7 +17,7 @@
 #endif
 
 char Dato;
-int FlagSerial;
+int FlagSerial,IndiceBuffer=0;
 char Buffer[MaxTam];
 
 
@@ -26,7 +26,11 @@ char Buffer[MaxTam];
 void isr_rda(void){
    //Dato=getc();
    FlagSerial = 1;
-   Buffer[MaxTam]=getc();
+   Buffer[IndiceBuffer]=getc();
+   IndiceBuffer++;
+   if(IndiceBuffer>MaxTam){
+      IndiceBuffer=0;
+   }
 }
    //int_timer0
 
